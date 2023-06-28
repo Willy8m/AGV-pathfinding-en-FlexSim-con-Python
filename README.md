@@ -1,3 +1,3 @@
 # Python-API-for-FlexSim
 
-![PDF File](ImplementacionAlgoritmoPython.pdf)
+![PDF File](Python-API-for-FlexSim/ImplementacionAlgoritmoPython.pdf)
