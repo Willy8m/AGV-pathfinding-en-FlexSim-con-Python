@@ -23,24 +23,23 @@ Si nos salta algún otro tipo de error, es probable que hayamos instalado python
 
 Los primeros pasos consisten en probar la conexión con un modelo simple:
 
-1. Necesitamos un script de Python a modo de test. Debe estar en la misma carpeta que nuestro modelo. Podemos usar el archivo de prueba " **PyMod.py**", o copiar directamente:
+Necesitamos un script de Python a modo de test. Debe estar en la misma carpeta que nuestro modelo. Podemos usar el archivo de prueba " **PyMod.py**", o copiar directamente:
 
-defPyFunc():
-
-    return20
+     def PyFunc():
+        return 20;
 
 1. Descargamos el archivo " **python-test.fsm**" o construimos el modelo siguiendo los pasos:
 
 - En FlexSim, para la conectividad con python, vamos a "File \> Global Preferences \> Code \> Python Version" y seleccionamos la versión de python que hayamos instalado, en nuestro caso la 3.10 .
-- A continuación, añadimos un User Command desde "Tools" y lo llamamos " **pyConnect**". Al editar el código, buscamos la opción de External code, marcada con una "E" encuadrada (si paramos el ratón encima aparece la nota: Make code externally linked). Seleccionamos **Format for Python** y le damos a aceptar:
+- A continuación, añadimos un User Command desde "Tools" y lo llamamos " **pyConnect** ". Al editar el código, buscamos la opción de External code, marcada con una "E" encuadrada (si paramos el ratón encima aparece la nota: Make code externally linked). Seleccionamos **Format for Python** y le damos a aceptar:
 
 [![3](https://i.ibb.co/c8ZYJJ3/Captu4ra.png "3")](https://i.ibb.co/c8ZYJJ3/Captu4ra.png "3")
 
 Nos generará un código con dos strings: La primera ("PyMod") es el nombre del script de python sin la extensión ".py" y la segunda ("PyFunc") el nombre de la función que hemos programado (Obviamente los nombres son completamente arbitrarios).
 
-/\*\*external python: \*//\*\*/"PyMod"/\*\*/
+    /\*\*external python: \*//\*\*/"PyMod"/\*\*/
 
-/\*\* \nfunction name:\*//\*\*/"PyFunc"/\*\*/
+    /\*\* \nfunction name:\*//\*\*/"PyFunc"/\*\*/
 
 Este código puede modificarse, pero necesita las palabras "external python" al principio.
 
@@ -50,15 +49,15 @@ Este código puede modificarse, pero necesita las palabras "external python" al 
 
 - En "_Processor1 \> Processor \> Process__Time"_ abrimos el editor de código y copiamos:
 
-**Object**** current** = ownerobject(c);
+        **Object**** current** = ownerobject(c);
 
-**Object**** item** = param(1);
+        **Object**** item** = param(1);
 
-**double**** process\_time** = pyConnect();
+        **double**** process\_time** = pyConnect();
 
-print("Return from Python:", **process** \_ **time** );
+        print("Return from Python:", **process** \_ **time** );
 
-**return** /\*\*/ **process** \_ **time** /\*\*direct\*/;
+        **return** /\*\*/ **process** \_ **time** /\*\*direct\*/;
 
 1. Ejecutamos el modelo. El processor1 debería tardar 20 segundos en procesar cada caja si todo está bien.
 
