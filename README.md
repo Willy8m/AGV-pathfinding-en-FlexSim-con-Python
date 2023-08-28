@@ -1,13 +1,14 @@
-# Python-API-for-FlexSim
-## Implementación de algoritmos con Python **FlexSim** **(v22.1)**
+# AGV pathfinding en FlexSim con Python
 
 El objetivo de este tutorial es mostrar la conexión FlexSim-Python, y entender como aplicarla. En concreto, lo aplicaremos a un algoritmo de pathfinding en almacenes (encontrar la ruta más corta entre una serie de puntos).
 
-# Instalación de programas
+## Instalación de programas
+
+Claramente, necesitamos tener "[FlexSim](https://www.flexsim.com/es/flexsim/)" instalado.
 
 (Para evitar problemas desinstalaremos cualquier software "Python" anterior)
 
-Instalaremos python 3.10 con el link "[Python.org](https://www.python.org/downloads/)" o desde la tienda de Microsoft. Para comprobar que Windows lo ha instalado correctamente, abriremos "Windows PowerShell" y escribiremos "python". Si se ha instalado bien, en consola nos aparecerá:
+Instalaremos python 3.10 desde "[Python.org](https://www.python.org/downloads/)" o desde la tienda de Microsoft. Para comprobar que Windows lo ha instalado correctamente, abriremos "Windows PowerShell" y escribiremos "python". Si se ha instalado bien, en consola nos aparecerá:
 
 [![1](https://i.ibb.co/HXnMc3m/Captura.png "1")](https://i.ibb.co/HXnMc3m/Captura.png "1")
 
@@ -19,7 +20,7 @@ Podemos comporbar, como antes, si PowerShell reconoce el comando "python". Para 
 
 Si nos salta algún otro tipo de error, es probable que hayamos instalado python junto con un entorno de programación, o de alguna forma alternativa, y más adelante dé problemas de connectividad con FlexSim. En tal caso, se recomienda desinstalar todo el software python y reinstalar como se ha explicado.
 
-# Conexión FlexSim-python
+## Conexión FlexSim-python
 
 Los primeros pasos consisten en probar la conexión con un modelo simple:
 
@@ -65,11 +66,11 @@ Este código puede modificarse, pero necesita las palabras "external python" al 
 
 La extrapolación a algoritmos más complejos es fácil con este procedimiento. De modo que podemos tener un algoritmo muy complejo y ejecutarlo con una línea desde FlexSim.
 
-## Problema
+### Problema
 
 Nuestro problema consiste en optimizar el tiempo que está un operario o AGV viajando en un almacén. Es decir, encontrar el camino más corto entre una serie de picks, limitado por los obstáculos físicos que no nos dejan cruzar en línea recta (Racks).
 
-## Algoritmo
+### Algoritmo
 
 Esta limitación física se añade al algoritmo desde FlexSim. De modo que necesitamos una **función de cálculo de distancia** entre dos puntos. Esta dependerá de la distribución particular del almacén y será equivalente a la distancia más corta andando.
 
@@ -93,7 +94,7 @@ Esto es todo lo que necesita el algoritmo para darnos una solución. El output d
 
 Además, cabe decir que el algoritmo va a colocar siempre el nodo 0 al principio y el 1 al final (esto es fácil de cambiar mirando el código). De modo que la solución dada para el ejemplo solo sirve como comprobante de que dicha condición de inicio y fin está siendo respetada. Ahora quedaría transmitir la información del orden de la ruta a los operarios, pero eso forma parte de programación en FlexSim.
 
-# Conclusiones
+## Conclusiones
 
 De modo que, con este ingrediente y una buena programación de nuestro modelo, podemos conseguir una implementación relativamente sencilla de una aplicación muy potente. Aun así, esto es solo una prueba de concepto, y el caso real conlleva problemas no tratados por el algoritmo, como el tráfico, la estabilidad y tamaño de los ítems, etc.
 
